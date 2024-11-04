@@ -1,0 +1,41 @@
+{% extends 'NavBar/StudentNavbar.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  <!-- Link to your CSS -->
+</head>
+<body>
+{% block body %}
+    <h1>Welcome to the Student Home Page</h1>
+    <p>Here you can find your courses, assignments, and other resources.</p>
+
+    <div>
+        <h2>Your Courses</h2>
+        <ul>
+            <li><a href="#">Course 1</a></li>
+            <li><a href="#">Course 2</a></li>
+            <li><a href="#">Course 3</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Assignments</h2>
+        <ul>
+            <li><a href="#">Assignment 1</a></li>
+            <li><a href="#">Assignment 2</a></li>
+            <li><a href="#">Assignment 3</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Resources</h2>
+        <a href="#">Library</a> |
+        <a href="#">Student Support</a> |
+        <a href="#">Contact Faculty</a>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa; /* Light background color */
+}
+
+h1, h2 {
+    color: #343a40; /* Dark color for headings */
+}
+
+.container {
+    max-width: 800px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container */
+}
+
+.list-group-item {
+    border: none; /* Remove border from list items */
+    background-color: #ffffff; /* White background for list items */
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef; /* Change background on hover */
+}
+
+a {
+    color: #007bff; /* Bootstrap primary color */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

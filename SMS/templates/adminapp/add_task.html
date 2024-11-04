@@ -1,0 +1,61 @@
+{% extends 'Navbar/ProjectNavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+{% block body %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Add Task Section -->
+        <div class="col-md-5">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Add Task</h3>
+                    <form method="post" action="{% url 'add_task' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-plus me-2"></i>Add Task
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task List Section -->
+        <div class="col-md-7">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Your Tasks</h3>
+                    {% if tasks %}
+                    <ul class="list-group">
+                        {% for task in tasks %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ task.title }}</span>
+                            <a href="{% url 'delete_task' task.pk %}" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="text-muted text-center">No tasks added yet. Add a task to get started!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends 'Navbar/Projectnavbar.html' %}
+{% load static %}<
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Sales Data</title>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').classList.remove('d-none');
+            document.getElementById('uploadBtn').disabled = true;
+        }
+    </script>
+</head>
+<body class="bg-light">
+{% block body %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Upload Sales Data</h2>
+
+    <form method="post" enctype="multipart/form-data" onsubmit="showSpinner()">
+        {% csrf_token %}
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="file" class="form-label">
+                        <i class="fas fa-file-csv me-2"></i>Select CSV file
+                    </label>
+                    <input type="file" name="file" id="file" class="form-control" accept=".csv" required>
+                    <div class="form-text"><i class="fas fa-info-circle me-2"></i>Only CSV files are allowed.</div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button id="uploadBtn" type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>Upload
+                    </button>
+                    <div id="spinner" class="spinner-border text-primary ms-3 d-none" role="status">
+                        <span class="visually-hidden">Uploading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% if total_sales is not None %}
+    <div class="card shadow-sm mt-5">
+        <div class="card-body">
+            <h3 class="card-title mb-4"><i class="fas fa-chart-line me-2"></i>Results</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong><i class="fas fa-dollar-sign me-2"></i>Total Sales:</strong> {{ total_sales }}</p>
+                    <p><strong><i class="fas fa-calculator me-2"></i>Average Sales:</strong> {{ average_sales }}</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h4 class="mb-3">Sales Distribution Chart</h4>
+                    <img src="data:image/png;base64,{{ chart }}" alt="Sales Distribution Chart" class="img-fluid rounded" />
+                </div>
+            </div>
+            <div class="text-end mt-3">
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-download me-2"></i>Download Chart
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger mt-5">
+        <i class="fas fa-exclamation-triangle me-2"></i><strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'Navbar/ProjectNavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg border-0 rounded-4" style="max-width: 400px; width: 100%;">
+            <div class="card-body p-4">
+                <h2 class="card-title text-center mb-4">Login</h2>
+                <form action="{% url 'UserLoginLogic' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="user_id" class="form-label">User ID</label>
+                        <input type="text" id="user_id" name="user_id" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="user_pass" class="form-label">Password</label>
+                        <input type="password" id="user_pass" name="user_pass" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    {% if messages %}
+                        <div class="alert alert-danger mt-3" role="alert">
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

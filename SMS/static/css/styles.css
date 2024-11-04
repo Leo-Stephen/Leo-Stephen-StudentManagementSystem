@@ -1,0 +1,67 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa; /* Light background color for the body */
+    color: #343a40; /* Dark text color for readability */
+}
+
+.container {
+    max-width: 800px; /* Limit container width for better layout */
+}
+
+/* Headings */
+h1 {
+    font-size: 2.5rem; /* Larger font size for main heading */
+    font-weight: bold; /* Make the main heading bold */
+}
+
+h2 {
+    font-size: 1.75rem; /* Slightly larger font size for subheadings */
+    color: #007bff; /* Bootstrap primary color for subheadings */
+}
+
+/* Paragraphs */
+p {
+    font-size: 1.2rem; /* Increase font size for paragraph text */
+}
+
+/* List Group Styles */
+.list-group-item {
+    background-color: #ffffff; /* White background for list items */
+    border: 1px solid #dee2e6; /* Light border for list items */
+    border-radius: 0.25rem; /* Slightly rounded corners */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef; /* Change background on hover */
+}
+
+/* Links */
+a {
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Bootstrap primary color for links */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+
+/* Faculty Resources */
+.mb-5 {
+    margin-bottom: 3rem; /* Increase bottom margin for spacing */
+}
+
+.me-2 {
+    margin-right: 0.5rem; /* Add some spacing between faculty resource links */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+}

@@ -1,0 +1,56 @@
+{% extends 'Navbar/ProjectNavbar.html' %}
+{% load static %}
+{% load custom_filters %}  <!-- Load the custom filter here -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+</head>
+<body>
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h2 class="text-center mb-4">Add Student</h2>
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Name field (manually styled) -->
+                    <div class="mb-3">
+                        <label for="{{ form.Name.id_for_label }}" class="form-label">Name:</label>
+                        {{ form.Name|add_class:"form-control" }}  <!-- Manually rendering the Name field -->
+                        {% if form.Name.errors %}
+                            <div class="text-danger">{{ form.Name.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Register Number field (manually styled) -->
+                    <div class="mb-3">
+                        <label for="{{ form.Register_Number.id_for_label }}" class="form-label">Register Number:</label>
+                        {{ form.Register_Number|add_class:"form-control" }}  <!-- Manually rendering the Register Number field -->
+                        {% if form.Register_Number.errors %}
+                            <div class="text-danger">{{ form.Register_Number.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Add Student</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-1 d-flex align-items-center">
+            <div class="border-start"></div> <!-- Bootstrap vertical divider -->
+        </div>
+
+        <div class="col-md-5 d-flex align-items-center justify-content-center">
+            <p class="text-muted">Additional section for future use or information.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>

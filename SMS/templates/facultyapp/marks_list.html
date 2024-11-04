@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Marks List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Course</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mark in marks %}
+        <tr>
+          <td>{{ mark.student.name }}</td>
+          <td>{{ mark.get_course_display }}</td>
+          <td>{{ mark.marks }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
